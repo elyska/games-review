@@ -3,8 +3,8 @@
 
 import { Router } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
-// import { upload } from 'https://cdn.deno.land/oak_upload_middleware/versions/v2/raw/mod.ts'
-// import { parse } from 'https://deno.land/std/flags/mod.ts'
+import { Base64 } from 'https://deno.land/x/bb64@1.1.0/mod.ts'
+import { resize } from 'https://deno.land/x/deno_image@v0.0.3/mod.ts'
 
 import { login, register } from './modules/accounts.js'
 
@@ -32,6 +32,37 @@ router.get('/add-game', async context => {
 	const body = await handle.renderView('game-form', data)
 	context.response.body = body
 })
+
+router.post('/add', async context => {
+	console.log('POST /add')
+	const authorised = context.cookies.get('authorised')
+	const body = context.request.body({ type: 'form-data' })
+	const value = await body.value.read()
+	const fields = value.fields
+	const image = value.files[0]
+	
+	// convert image to base64
+	try {
+		if (image.originalName !== "") {
+			const resized = await resize(Deno.readFileSync(image.filename), { width: 100, height: 100 })
+			Deno.writeFileSync(image.filename, resized)
+			fields.image = Base64.fromFile(image.filename).toStringWithMime()
+		}
+		else {
+			fields.image = "images/placeholder.png"
+		}
+		console.log(fields)
+
+		//await addGame(fields, authorised)
+
+		context.response.redirect('/')
+	}
+	catch(err) {
+		console.log(err)
+		context.response.redirect('/add-game')
+	}
+})
+
 
 router.get('/login', async context => {
 	const data = { noNav: true, logReg: true, title: "Log In" }
