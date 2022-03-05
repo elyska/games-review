@@ -1,10 +1,31 @@
 
 
 <header>
-	<h1>Home</h1>
-	{{#if authorised}}
-		<a href="/logout">Log out</a>
-	{{else}}
-		<a href="/login">Log in</a>
-	{{/if}}
+
+    <nav>
+        <figure>
+            <img src="/images/logo.png" alt="Logo">
+        </figure>
+        <figure>
+            <img src="/images/menu.svg" alt="Menu">
+        </figure>
+        <figure>
+            <img src="/images/close.svg" alt="Close">
+        </figure>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            {{#if authorised}}
+                <li><a href="/add-game">Add Game</a></li>
+            {{/if}}
+            <li>
+                {{#if authorised}}
+		            <a href="/logout">Log out</a>
+	            {{else}}
+		            <a href="/login">Log in</a>
+	            {{/if}}
+            </li>
+        </ul>
+    </nav>
+	
 </header>
