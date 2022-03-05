@@ -6,4 +6,4 @@
 @import url("./style-small.css");
 
 /* Large screens */
-@import url("./style-large.css");
+@import url("./style-large.css")(min-width: 900px);
