@@ -21,13 +21,13 @@ router.get('/', async context => {
 })
 
 router.get('/login', async context => {
-	const data = { noNav: true }
+	const data = { noNav: true, logReg: true }
 	const body = await handle.renderView('login', data)
 	context.response.body = body
 })
 
 router.get('/register', async context => {
-	const data = { noNav: true }
+	const data = { noNav: true, logReg: true }
 	const body = await handle.renderView('register', data)
 	context.response.body = body
 })

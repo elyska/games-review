@@ -1,0 +1,30 @@
+
+main {
+    text-align: center;
+    margin-top: 50px;
+}
+
+main img {
+    width: 50px;
+}
+main img:hover {
+    cursor: pointer;
+}
+
+form input:not(input[type="submit"]) {
+    width: 200px;
+}
+
+form p:last-of-type {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin: auto;
+}
+p a {
+    transform: translate(0, 25%);
+    text-decoration: underline;
+}
+p a:hover {
+    text-decoration: none;
+}

@@ -1,5 +1,8 @@
 
 <main>
+        <figure>
+            <a href="/"><img src="/images/logo.png" alt="Logo"></a>
+        </figure>
 	<h1>Log In</h1>
 	<form action="/login" method="post">
 		<p>
@@ -10,9 +13,11 @@
 			<label for="pass">Password</label><br />
 			<input type="password" name="password" placeholder="your password" value="{{body.pass}}">
 		</p>
-		<p><input type="submit" value="Log in"></p>
+		<p>
+			<input type="submit" value="Log in">
+			<a href="/register">Register</a>
+		</p>
 	</form>
-	<p><a href="/">Home page</a></p>
-	<p><a href="/">Register</a></p>
+	<p><a href="/">Back to the Home Page</a></p>
 </main>
 
