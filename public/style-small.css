@@ -1,4 +1,6 @@
 
+/* general */
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
@@ -18,9 +20,31 @@ a {
 
 main {
     clear: both;
+    margin: auto;
+    width: 80%;
 } 
 
+/* forms */
+
+input {
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+
+input:focus {
+    outline: 3px solid var(--primary);
+}
+
 /* navigation */
+
+header {
+    background-color: var(--background-dark);
+    overflow: hidden;
+}
 
 nav {
     width: 80%;
@@ -36,8 +60,8 @@ nav figure img:hover {
     cursor: pointer;
 }
 nav figure:first-of-type {
-    padding: 10px;
-    float: left;
+    padding: 10px 0;
+    display: inline-block
 }
 nav figure:nth-of-type(2) { /* Menu */
     float: right;
@@ -49,7 +73,15 @@ nav figure:nth-of-type(3) { /* Close Menu */
 nav ul {
     clear: both;
     display: none;
+    padding: 0;
 }
 nav ul li {
     list-style-type: none;
+    margin: 10px 0;
+}
+nav ul li a {
+    transition: color 0.2s;
+}
+nav ul li a:hover {
+    color: var(--primary);
 }
