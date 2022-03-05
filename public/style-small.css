@@ -52,10 +52,11 @@ input[type="submit"] {
     color: var(--typeface) !important;
     font-size: 17px;
     width: max-content;
+    transition: background-color 0.2s
 }
 
 input[type="submit"]:hover {
-    background-color: var(--secondary);
+    background-color: var(--secondary-dark) !important;
     cursor: pointer;
 }
 /* navigation */

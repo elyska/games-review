@@ -24,8 +24,11 @@ router.get('/add-game', async context => {
 	const authorised = context.cookies.get('authorised')
 	if (authorised === undefined) context.response.redirect('/login')
 
+	// get current year
+	const today = new Date()
+	const currentYear = today.getFullYear()
 
-	const data = { authorised, title: "Add Game", gameForm: true, currentYear: 2022 }
+	const data = { authorised, title: "Add Game", gameForm: true, currentYear }
 	const body = await handle.renderView('game-form', data)
 	context.response.body = body
 })
