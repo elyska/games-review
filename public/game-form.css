@@ -1,0 +1,12 @@
+
+form input, textarea {
+    width: 100%;
+}
+
+section {
+    display: flex;
+}
+
+input[type="range"] {
+    margin: 0 15px;
+}

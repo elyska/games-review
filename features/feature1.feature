@@ -7,11 +7,12 @@ Feature: Adding a New game
 Scenario: Logged in user accessing the Add Game form page
     Given I am on the Home page
     And I am logged in
-    When I click the "Add game" button
+    When I click the "Add Game" button
     Then I should see a "Name of the Game" field
     And I should see a "Publisher" field
     And I should see a "Year of Release" slider
     And I should see a "Description" textbox
+    And I should see a "Upload a Thumbnail of the Game Box Cover" textbox
 
 @notLoggedIn
 Scenario: Accessing the Add Game form page without logging in

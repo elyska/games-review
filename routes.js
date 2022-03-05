@@ -15,19 +15,29 @@ const router = new Router()
 // the routes defined here
 router.get('/', async context => {
 	const authorised = context.cookies.get('authorised')
-	const data = { authorised }
+	const data = { authorised, title: "Home" }
 	const body = await handle.renderView('home', data)
 	context.response.body = body
 })
 
+router.get('/add-game', async context => {
+	const authorised = context.cookies.get('authorised')
+	if (authorised === undefined) context.response.redirect('/login')
+
+
+	const data = { authorised, title: "Add Game", gameForm: true, currentYear: 2022 }
+	const body = await handle.renderView('game-form', data)
+	context.response.body = body
+})
+
 router.get('/login', async context => {
-	const data = { noNav: true, logReg: true }
+	const data = { noNav: true, logReg: true, title: "Log In" }
 	const body = await handle.renderView('login', data)
 	context.response.body = body
 })
 
 router.get('/register', async context => {
-	const data = { noNav: true, logReg: true }
+	const data = { noNav: true, logReg: true, title: "Register" }
 	const body = await handle.renderView('register', data)
 	context.response.body = body
 })

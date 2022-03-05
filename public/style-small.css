@@ -13,6 +13,10 @@ h1, h2, h3 {
 	padding: 0;
 }
 
+h1 {
+    margin: 20px 0;
+}
+
 a {
     color: var(--typeface);
     text-decoration: none;
@@ -26,19 +30,7 @@ main {
 
 /* forms */
 
-input[type="submit"] {
-    outline: none !important;
-    background-color: var(--secondary);
-    color: var(--typeface);
-    font-size: 17px;
-}
-
-input[type="submit"]:hover {
-    background-color: var(--secondary);
-    cursor: pointer;
-}
-
-input {
+input:not(input[type="range"]), textarea {
     border: none;
     outline: none;
     box-sizing: border-box;
@@ -46,12 +38,26 @@ input {
     padding: 10px 15px;
     margin: 5px 0;
     font-weight: bold;
+    background-color: var(--typeface);
+    color: var(--background);
 }
 
-input:focus {
+input:not(input[type="range"]):focus, textarea:focus {
     outline: 3px solid var(--primary);
 }
 
+input[type="submit"] {
+    outline: none !important;
+    background-color: var(--secondary) !important;
+    color: var(--typeface) !important;
+    font-size: 17px;
+    width: max-content;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--secondary);
+    cursor: pointer;
+}
 /* navigation */
 
 header {
