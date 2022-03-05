@@ -8,7 +8,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 
 import { login, register } from './modules/accounts.js'
 
-const handle = new Handlebars({ defaultLayout: '' })
+const handle = new Handlebars()
 
 const router = new Router()
 
@@ -21,12 +21,14 @@ router.get('/', async context => {
 })
 
 router.get('/login', async context => {
-	const body = await handle.renderView('login')
+	const data = { noNav: true }
+	const body = await handle.renderView('login', data)
 	context.response.body = body
 })
 
 router.get('/register', async context => {
-	const body = await handle.renderView('register')
+	const data = { noNav: true }
+	const body = await handle.renderView('register', data)
 	context.response.body = body
 })
 

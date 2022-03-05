@@ -6,8 +6,8 @@ Feature: Adding a New game
 @gameForm
 Scenario: Logged in user accessing the Add Game form page
     Given I am on the Home page
-    When I click the "Add game" button
     And I am logged in
+    When I click the "Add game" button
     Then I should see a "Name of the Game" field
     And I should see a "Publisher" field
     And I should see a "Year of Release" slider
