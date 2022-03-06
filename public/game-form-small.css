@@ -1,0 +1,24 @@
+
+form input, textarea {
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    color: var(--typeface-dark);
+}
+
+section {
+    display: flex;
+}
+section:last-of-type {
+    display: block;
+}
+
+input[type="range"] {
+    margin: 0 15px;
+}
+
+input[type="file"]:hover {
+    cursor: pointer;
+}

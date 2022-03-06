@@ -43,7 +43,7 @@ input:not(input[type="range"]), textarea {
 }
 
 input:not(input[type="range"]):focus, textarea:focus {
-    outline: 3px solid var(--primary);
+    /*outline: 3px solid var(--primary);*/
 }
 
 input[type="submit"] {

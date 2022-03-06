@@ -1,15 +1,6 @@
 
-form input, textarea {
-    width: 100%;
-}
+/* Small screens */
+@import url("./game-form-small.css");
 
-section {
-    display: flex;
-}
-
-input[type="range"] {
-    margin: 0 15px;
-}
-input[type="file"]:hover {
-    cursor: pointer;
-}
+/* Large screens */
+@import url("./game-form-large.css")(min-width: 650px);
