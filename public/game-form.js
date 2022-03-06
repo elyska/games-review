@@ -11,7 +11,6 @@ rangeInput.addEventListener("change", () => {
 })
 
 // markdown preview
-
 let textbox = document.querySelector("textarea")
 let preview = document.querySelector("section > p:last-of-type")
 

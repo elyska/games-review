@@ -7,6 +7,7 @@ import { Base64 } from 'https://deno.land/x/bb64@1.1.0/mod.ts'
 import { resize } from 'https://deno.land/x/deno_image@v0.0.3/mod.ts'
 
 import { login, register } from './modules/accounts.js'
+import { addGame } from './modules/games.js'
 
 const handle = new Handlebars()
 
@@ -53,7 +54,7 @@ router.post('/add', async context => {
 		}
 		console.log(fields)
 
-		//await addGame(fields, authorised)
+		await addGame(fields, authorised)
 
 		context.response.redirect('/')
 	}
