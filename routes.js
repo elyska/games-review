@@ -23,7 +23,7 @@ router.get('/', async context => {
 
 router.get('/add-game', async context => {
 	const authorised = context.cookies.get('authorised')
-	if (authorised === undefined) context.response.redirect('/login')
+	if (authorised === undefined) context.response.redirect('/')
 
 	// get current year
 	const today = new Date()
