@@ -1,7 +1,7 @@
 
 /* games.js */
 
-import { db } from "database"
+import { db } from "../modules/db.js"
 import Ajv from '../ajv.js'
 
 export async function addGame(data, username) {

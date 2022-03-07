@@ -30,4 +30,3 @@ Scenario: Adding a nęw game
     And I fill in "description" with "Space Invaders is a fixed shooter in which the player moves a laser cannon horizontally across the bottom of the screen and fires at aliens overhead."
     And I click the "Submit" button
     Then I should be redirected to the "Home" page
-    And I should see a "Space Invaders" heading
