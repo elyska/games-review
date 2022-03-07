@@ -5,14 +5,14 @@ Feature: Adding a New game
 
 @gameForm
 Scenario: Logged in user accessing the Add Game form page
-    Given I am on the Home page
-    And I am logged in
+    Given I am logged in
+    And I am on the Home page
     When I click the "Add Game" button
-    Then I should see a "Name of the Game" field
-    And I should see a "Publisher" field
-    And I should see a "Year of Release" slider
-    And I should see a "Description" textbox
-    And I should see a "Upload a Thumbnail of the Game Box Cover" textbox
+    Then I should see a "name" field
+    And I should see a "publisher" field
+    And I should see a "year" slider input
+    And I should see a "description" textbox
+    And I should see an "image" file input
 
 @notLoggedIn
 Scenario: Accessing the Add Game form page without logging in
@@ -23,7 +23,8 @@ Scenario: Accessing the Add Game form page without logging in
 
 @addGame
 Scenario: Adding a nęw game
-    Given I am on the "Add Game" form page
+    Given I am logged in
+    And I am on the "Add Game" form page
     When I fill in "name" with "Space Invaders"
     And I fill in "publisher" with "Atari, Inc."
     And I select "1981" from "year"
