@@ -11,7 +11,7 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 // usernames and password allow access to the Foo Bar screen
 
 // SCENARIO access login page from home page
-Deno.test('access login page from home page     ', async test => {
+Deno.test('access login page from home page     ', async () => {
     // GIVEN I am on the homepage
             const browser = await puppeteer.launch({ headless: true })
             const page = await browser.newPage()
@@ -29,7 +29,7 @@ Deno.test('access login page from home page     ', async test => {
             await browser.close()
 })
 
-Deno.test('log in with valid username/password  ', async test => {
+Deno.test('log in with valid username/password  ', async () => {
     // GIVEN I am on the homepage
             const browser = await puppeteer.launch({ headless: true })
             const page = await browser.newPage()
@@ -48,7 +48,7 @@ Deno.test('log in with valid username/password  ', async test => {
             await browser.close()
 })
 
-Deno.test('log in with invalid password         ', async test => {
+Deno.test('log in with invalid password         ', async () => {
     // GIVEN I am on the "Log In" page
             const browser = await puppeteer.launch({ headless: true })
             const page = await browser.newPage()
@@ -67,7 +67,7 @@ Deno.test('log in with invalid password         ', async test => {
             await browser.close()
 })
 
-Deno.test('log in with invalid username/password', async test => {
+Deno.test('log in with invalid username/password', async () => {
     // GIVEN I am on the "Log In" page
             const browser = await puppeteer.launch({ headless: true })
             const page = await browser.newPage()

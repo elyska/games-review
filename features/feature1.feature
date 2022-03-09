@@ -22,7 +22,7 @@ Scenario: Accessing the Add Game form page without logging in
     But I should not see the "Add game" button
 
 @addGame
-Scenario: Adding a nęw game
+Scenario: Adding a new game
     Given I am logged in
     And I am on the "Add Game" form page
     When I fill in "name" with "Space Invaders"

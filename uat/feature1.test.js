@@ -12,7 +12,7 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 //      So that I can add new game details
 
 // SCENARIO: Logged in user accessing the Add Game form page
-Deno.test('logged in user accessing the Add Game form page     ', async test => {
+Deno.test('logged in user accessing the Add Game form page     ', async () => {
     // GIVEN I am logged in
             const browser = await puppeteer.launch({ headless: true })
             //const browser = await puppeteer.launch({ headless: false, slowMo: 50  })
@@ -46,7 +46,7 @@ Deno.test('logged in user accessing the Add Game form page     ', async test => 
 })
 
 // SCENARIO: Accessing the Add Game form page without logging in
-Deno.test('Accessing the Add Game form page without logging in     ', async test => {
+Deno.test('Accessing the Add Game form page without logging in     ', async () => {
     // GIVEN I am not logged in
             const browser = await puppeteer.launch({ headless: true })
             //const browser = await puppeteer.launch({ headless: false, slowMo: 50  })
@@ -63,8 +63,8 @@ Deno.test('Accessing the Add Game form page without logging in     ', async test
             await browser.close()
 })
 
-// SCENARIO: Adding a nęw game
-Deno.test('Adding a nęw game     ', async test => {
+// SCENARIO: Adding a new game
+Deno.test('Adding a new game     ', async () => {
     // GIVEN I am logged in
             const browser = await puppeteer.launch({ headless: true })
             //const browser = await puppeteer.launch({ headless: false, slowMo: 50  })

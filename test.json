@@ -1,5 +1,5 @@
 {
     "imports": {
-        "database": "./stubs/db.stub.js"
+        "database": "./test_doubles/db.js"
     }
 }

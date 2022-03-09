@@ -4,3 +4,5 @@ tmp/
 cov_profile/
 
 *.lcov
+
+out/

@@ -34,7 +34,7 @@ Deno.test({
         const username = "doej"
 
         try {
-            const returned = await addGame(data, username)
+            await addGame(data, username)
             fail("failed to throw an exception")
         }
         catch (err) {
@@ -53,7 +53,7 @@ Deno.test({
         const username = "doej"
 
         try {
-            const returned = await addGame(data, username)
+            await addGame(data, username)
             fail("failed to throw an exception")
         }
         catch (err) {

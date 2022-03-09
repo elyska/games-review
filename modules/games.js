@@ -1,8 +1,21 @@
 
 /* games.js */
 
-import { db } from "../modules/db.js"
+/**
+ * Games Module.
+ * @module games
+ */
+
+import { db } from "database"
 import Ajv from '../ajv.js'
+
+/**
+ * Saves game data in the database
+ * @param {object} data
+ * @param {string} username
+ * @returns {boolean}
+ * @throws Will throw an error if the validation is fails.
+ */
 
 export async function addGame(data, username) {
     // data validation

@@ -1,6 +1,11 @@
 
 /* accounts.js */
 
+/**
+ * Accounts Module.
+ * @module accounts
+ */
+
 import { compare, genSalt, hash } from 'https://deno.land/x/bcrypt@v0.2.4/mod.ts'
 
 import { db } from './db.js'
