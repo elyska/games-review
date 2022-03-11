@@ -83,9 +83,14 @@ export async function allGames() {
     const games = await db.query(sql)
     return games
 }
-
+/**
+ * Gets a game with a matching id from the database
+ * @param {number} id
+ * @returns {Object} game
+ */
 export async function getGame(id) {
     const sql = `SELECT * FROM games WHERE id = ${id};`
-    const game = await db.query(sql)
-    return game[0]
+    const record = await db.query(sql)
+    cosnt game = record[0]
+    return game
 }
