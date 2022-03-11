@@ -10,11 +10,21 @@ import { db } from "database"
 import Ajv from '../ajv.js'
 
 /**
+ * An object containing game details
+ * @typedef {Object} Game
+ * @property {string} name - name of the game
+ * @property {string} publisher - publisher of the game
+ * @property {string} year - year of release
+ * @property {string} description - multiline description of the game
+ * @property {string} image - data URL or path to a placeholder image
+ */
+
+/**
  * Saves game data in the database
- * @param {object} data
+ * @param {Game} data
  * @param {string} username
  * @returns {boolean}
- * @throws Will throw an error if the validation is fails.
+ * @throws Will throw an error if the data validation fails.
  */
 
 export async function addGame(data, username) {

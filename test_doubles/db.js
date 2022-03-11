@@ -7,6 +7,10 @@
 class Db {
     constructor() {}
 
+    /**
+     * @param {string} sql
+     * @return {boolean}
+     */
     query(sql) {
         console.log(sql)
         return true

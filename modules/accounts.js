@@ -13,10 +13,17 @@ import { db } from './db.js'
 const saltRounds = 10
 const salt = await genSalt(saltRounds)
 
+// adapted from https://jsdoc.app/tags-typedef.html
+/**
+ * An object containing user credentials
+ * @typedef {Object} Credentials
+ * @property {string} username
+ * @property {string} password
+ */
+
 /**
  * Checks user credentials.
- * @param {string} username
- * @param {string} password
+ * @param {Credentials} data
  * @returns {string} the username for the valid account
  */
 export async function login(data) {
@@ -32,10 +39,9 @@ export async function login(data) {
 }
 
 /**
- * Adds x and y.
- * @param {number} x
- * @param {number} y
- * @returns {number} Sum of x and y
+ * Adds user credentials to the database
+ * @param {Credentials} data
+ * @returns {boolean}
  */
 export async function register(data) {
 	const password = await hash(data.password, salt)
