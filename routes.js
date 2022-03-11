@@ -113,7 +113,8 @@ router.post('/login', async context => {
 router.get('/games/:id', async context => {
 	const authorised = context.cookies.get('authorised')
 	const id = context.params.id
-	const game = getGame(id)
+	console.log(id)
+	const game = await getGame(id)
 	const data = { authorised, title: game.name, gameDetail: true, game }
 	const body = await handle.renderView('game-detail', data)
 	context.response.body = body
