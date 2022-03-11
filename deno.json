@@ -1,7 +1,7 @@
 {
   "lint": {
     "files": {
-      "exclude": ["tmp/", "stats.js", "spa/", "public/", "ajv.js", "out/", "uat/", "tests/"]
+      "exclude": ["tmp/", "stats.js", "spa/", "public/", "ajv.js", "out/"]//, "uat/", "tests/"]
     },
     "rules": {
       "tags": ["recommended"],
