@@ -1,0 +1,44 @@
+
+/* feature3.test.js */
+
+import puppeteer from 'https://deno.land/x/puppeteer@9.0.2/mod.ts'
+import { assertEquals } from 'https://deno.land/std@0.79.0/testing/asserts.ts'
+
+const url = 'https://photo-tempo-8080.codio-box.uk/'
+
+// FEATURE: Viewing game details
+//     As a user
+//     I want to be able to view game's details
+//     to learn more about a game
+
+// SCENARIO: View Space Invaders datails page
+Deno.test('View Space Invaders datails page     ', async () => {
+    // GIVEN I am on the homepage
+            const args = [`--window-size=${1000},${800}`]
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
+            const page = await browser.newPage()
+            await page.setViewport({ width: 1000, height: 800 })
+            await page.goto(url, { waitUntil: 'networkidle0' })
+    // WHEN I click "Details" button next to the "Space Invaders" heading
+            await page.click('a[href="/games/1"]', { waitUntil: 'networkidle0' })
+    // THEN I should see "Space Invaders" heading
+            const name = await page.$eval('h1', node => node.innerText)
+            await assertEquals(name, "Space Invaders", 'no "Space Invaders" heading')
+    // AND I should see "Atari, Inc." text
+            const publisher = await page.$eval('main p:nth-of-type(1)', node => node.innerText)
+            await assertEquals(publisher, "Space Invaders", 'no "Space Invaders" heading')
+    // AND I should see "1981" text
+            const year = await page.$eval('main p:nth-of-type(2)', node => node.innerText)
+            await assertEquals(year, "Space Invaders", 'no "Space Invaders" heading')
+    // AND I should see "Space Invaders is a fixed shooter." text
+            const desc = await page.$eval('main p:nth-of-type(3)', node => node.innerText)
+            await assertEquals(desc, "Space Invaders is a fixed shooter.", 'no matching description')
+    // AND I should see "doej" text
+            const user = await page.$eval('main p:nth-of-type(4)', node => node.innerText)
+            await assertEquals(user, "doej", 'no matching username')
+    // AND I should see "11/3/2022" text
+            const date = await page.$eval('main p:nth-of-type(5)', node => node.innerText)
+            await assertEquals(date, "11/3/2022", 'no "11/3/2022" date')
+            await browser.close()
+})
