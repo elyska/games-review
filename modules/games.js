@@ -74,6 +74,10 @@ export async function addGame(data, username) {
     return true
 }
 
+/**
+ * Gets all games from the database
+ * @returns {Array.<Object>} games
+ */
 export async function allGames() {
     const sql = `SELECT id, name, year, image FROM games;`
     const games = await db.query(sql)
