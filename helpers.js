@@ -9,7 +9,7 @@ const markdownToHtml = (text) => {
 }
 
 const toDate = (timestamp) => {
-    const date = timestamp.getDate().toString() + "-" + (timestamp.getMonth() + 1).toString() + "-" + timestamp.getFullYear().toString()
+    const date = timestamp.getDate().toString() + "/" + (timestamp.getMonth() + 1).toString() + "/" + timestamp.getFullYear().toString()
     return date
 }
 

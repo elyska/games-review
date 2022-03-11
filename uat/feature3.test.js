@@ -16,7 +16,7 @@ Deno.test('View Space Invaders datails page     ', async () => {
     // GIVEN I am on the homepage
             const args = [`--window-size=${1000},${800}`]
             const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url, { waitUntil: 'networkidle0' })
@@ -27,18 +27,18 @@ Deno.test('View Space Invaders datails page     ', async () => {
             await assertEquals(name, "Space Invaders", 'no "Space Invaders" heading')
     // AND I should see "Atari, Inc." text
             const publisher = await page.$eval('main p:nth-of-type(1)', node => node.innerText)
-            await assertEquals(publisher, "Space Invaders", 'no "Space Invaders" heading')
+            await assertEquals(publisher, "Atari, Inc.", 'no matching publisher')
     // AND I should see "1981" text
             const year = await page.$eval('main p:nth-of-type(2)', node => node.innerText)
-            await assertEquals(year, "Space Invaders", 'no "Space Invaders" heading')
+            await assertEquals(year, "1981", 'no matching year')
     // AND I should see "Space Invaders is a fixed shooter." text
             const desc = await page.$eval('main p:nth-of-type(3)', node => node.innerText)
             await assertEquals(desc, "Space Invaders is a fixed shooter.", 'no matching description')
     // AND I should see "doej" text
-            const user = await page.$eval('main p:nth-of-type(4)', node => node.innerText)
+            const user = await page.$eval('main section:nth-of-type(2) p:nth-of-type(1)', node => node.innerText)
             await assertEquals(user, "doej", 'no matching username')
     // AND I should see "11/3/2022" text
-            const date = await page.$eval('main p:nth-of-type(5)', node => node.innerText)
+            const date = await page.$eval('main section:nth-of-type(2) p:nth-of-type(2)', node => node.innerText)
             await assertEquals(date, "11/3/2022", 'no "11/3/2022" date')
             await browser.close()
 })
