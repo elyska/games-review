@@ -91,6 +91,6 @@ export async function allGames() {
 export async function getGame(id) {
     const sql = `SELECT * FROM games WHERE id = ${id};`
     const record = await db.query(sql)
-    cosnt game = record[0]
+    const game = record[0]
     return game
 }
