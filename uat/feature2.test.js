@@ -1,5 +1,5 @@
 
-/* feature1.test.js */
+/* feature2.test.js */
 
 import puppeteer from 'https://deno.land/x/puppeteer@9.0.2/mod.ts'
 import { assertEquals, assertArrayIncludes } from 'https://deno.land/std@0.79.0/testing/asserts.ts'
@@ -16,8 +16,8 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 Deno.test('Added game appears on the home page     ', async () => {
     // GIVEN I am logged in
             const args = [`--window-size=${1000},${800}`]
-            //const browser = await puppeteer.launch({ headless: true, args })
-            const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
