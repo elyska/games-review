@@ -83,3 +83,7 @@ export async function allGames() {
     const games = await db.query(sql)
     return games
 }
+
+export async function getGame(id) {
+    
+}

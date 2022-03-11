@@ -3,7 +3,7 @@
 
 import { assertEquals, assert, assertExists, fail } from 'https://deno.land/std@0.79.0/testing/asserts.ts'
 
-import { addGame, allGames } from '../modules/games.js'
+import { addGame, allGames, getGame } from '../modules/games.js'
 
 // code based on https://deno.land/manual@v1.19.2/testing/sanitizers
 Deno.test({
@@ -70,6 +70,26 @@ Deno.test({
   async fn() {
     const games = await allGames()
     assertExists(games, "returned null or undefined")
+  },
+  sanitizeResources: false,
+  sanitizeOps: false
+})
+
+Deno.test({
+  name: "get a specific game",
+  async fn() {
+    const expectedGame = {
+        id: 1,
+        name: "Space Invaders",
+        publisher: "Atari, Inc.",
+        year: "1981",
+        description: "Space Invaders is a fixed shooter.",
+        image: "images/placeholder.png",
+        creationDate: "2022-03-11 18:08:11",
+        username: "doej"
+    }
+    const game = await getGame(1)
+    assertEquals(game, expectedGame, "invalid game details")
   },
   sanitizeResources: false,
   sanitizeOps: false
