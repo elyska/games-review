@@ -1,4 +1,20 @@
 
 <main>
-	<p>This is the home page. Users can see it without logging in.</p>
+	{{#if games}}
+		{{#each games}}
+			<a href="">
+					<article>
+					<figure>
+						<img src="{{image}}" alt="Game box cover">
+					</figure>
+					<section>
+						<h1>{{name}}</h1>
+						<p>{{year}}</p>
+					</section>
+				</article>
+			</a>
+		{{/each}}
+	{{else}}
+		<p>There are currently no games.</p>
+	{{/if}}
 </main>

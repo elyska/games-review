@@ -7,7 +7,7 @@ import { Base64 } from 'https://deno.land/x/bb64@1.1.0/mod.ts'
 import { resize } from 'https://deno.land/x/deno_image@v0.0.3/mod.ts'
 
 import { login, register } from './modules/accounts.js'
-import { addGame } from './modules/games.js'
+import { addGame, allGames } from './modules/games.js'
 
 const handle = new Handlebars()
 
@@ -16,7 +16,8 @@ const router = new Router()
 // the routes defined here
 router.get('/', async context => {
 	const authorised = context.cookies.get('authorised')
-	const data = { authorised, title: "Home" }
+	const games = await allGames()
+	const data = { authorised, title: "Home", games, home: true }
 	const body = await handle.renderView('home', data)
 	context.response.body = body
 })
