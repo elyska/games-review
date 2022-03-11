@@ -17,7 +17,7 @@ const router = new Router()
 router.get('/', async context => {
 	const authorised = context.cookies.get('authorised')
 	const games = await allGames()
-	const data = { authorised, title: "Home", games }
+	const data = { authorised, title: "Home", games, home: true }
 	const body = await handle.renderView('home', data)
 	context.response.body = body
 })
