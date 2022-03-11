@@ -4,6 +4,7 @@
 import { Application } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 import { parse } from 'https://deno.land/std/flags/mod.ts'
+import { helpers } from './helpers.js'
 
 import router from './routes.js'
 
@@ -15,7 +16,7 @@ const argPort = parse(args).port
 const port = argPort ? Number(argPort) : defaultPort
 
 const app = new Application()
-const handle = new Handlebars({ defaultLayout: '' })
+const handle = new Handlebars({ defaultLayout: '', helpers: helpers })
 
 // error handler
 app.use(async (context, next) => {

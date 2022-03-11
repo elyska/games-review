@@ -1,0 +1,45 @@
+
+<main>
+    <h1>Add New Game</h1>
+    <form method="POST" action="/add" enctype="multipart/form-data">
+        <p>
+			<label for="name">Name of the Game</label><br />
+			<input type="text" name="name" maxLength="60" required>
+        </p>
+        
+        <p>
+			<label for="publisher">Publisher</label><br />
+			<input type="text" name="publisher" maxLength="60" required>
+        </p>
+
+        <p>
+			<label for="year">Year of Release</label><br />
+			
+            <section>
+                <strong>1980</strong>
+                <input type="range" min="1980" max="{{currentYear}}" name="year">
+                <strong>{{currentYear}}</strong>
+            </section>
+        </p>
+
+        <section>
+            <p>
+			    <label for="description">Description</label><br />
+                <textarea name="description" rows="15" placeholder="This textbox supports markdown formatting. You will see a live preview below or next to the box." required></textarea>
+            </p>
+            <p></p>
+        </section>   
+
+        <p>
+			<label for="image">Upload a Thumbnail of the Game Box Cover</label><br />
+			<input type="file" name="image" accept="image/png, image/jpeg, image/gif">
+        </p>
+
+        <p>
+            <input type="submit" value="Add game">
+        </p>
+    </form>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="module" src="/game-form.js"></script>

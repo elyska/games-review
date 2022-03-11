@@ -1,0 +1,15 @@
+
+{{> head}}
+
+{{#unless noNav}}
+    {{> nav}}
+{{/unless}}
+
+{{{ body }}}
+
+{{#unless noNav}}
+    <script type="module" src="/nav.js"></script>
+{{/unless}}
+
+
+{{> foot}}

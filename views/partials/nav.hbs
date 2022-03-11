@@ -1,0 +1,31 @@
+
+
+<header>
+
+    <nav>
+        <figure>
+            <a href="/"><img src="/images/logo.png" alt="Logo"></a>
+        </figure>
+        <figure>
+            <img src="/images/menu.svg" alt="Menu">
+        </figure>
+        <figure>
+            <img src="/images/close.svg" alt="Close">
+        </figure>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            {{#if authorised}}
+                <li><a href="/add-game">Add Game</a></li>
+            {{/if}}
+            <li>
+                {{#if authorised}}
+		            <a href="/logout">Log Out</a>
+	            {{else}}
+		            <a href="/login">Log In</a>
+	            {{/if}}
+            </li>
+        </ul>
+    </nav>
+	
+</header>

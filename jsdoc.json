@@ -7,6 +7,7 @@
       "line": 17,
       "col": 0
     },
+    "declarationKind": "export",
     "jsDoc": {
       "doc": "Checks user credentials.",
       "tags": [
@@ -47,8 +48,29 @@
     "name": "register",
     "location": {
       "filename": "file:///home/codio/workspace/modules/accounts.js",
-      "line": 29,
+      "line": 35,
       "col": 0
+    },
+    "declarationKind": "export",
+    "jsDoc": {
+      "doc": "Adds x and y.",
+      "tags": [
+        {
+          "kind": "param",
+          "name": "x",
+          "type": "number"
+        },
+        {
+          "kind": "param",
+          "name": "y",
+          "type": "number"
+        },
+        {
+          "kind": "return",
+          "type": "number",
+          "doc": "Sum of x and y"
+        }
+      ]
     },
     "functionDef": {
       "params": [
@@ -73,6 +95,7 @@
       "line": 4,
       "col": 0
     },
+    "declarationKind": "private",
     "importDef": {
       "src": "https://deno.land/x/bcrypt@v0.2.4/mod.ts",
       "imported": "compare"
@@ -86,6 +109,7 @@
       "line": 4,
       "col": 0
     },
+    "declarationKind": "private",
     "importDef": {
       "src": "https://deno.land/x/bcrypt@v0.2.4/mod.ts",
       "imported": "genSalt"
@@ -99,6 +123,7 @@
       "line": 4,
       "col": 0
     },
+    "declarationKind": "private",
     "importDef": {
       "src": "https://deno.land/x/bcrypt@v0.2.4/mod.ts",
       "imported": "hash"
@@ -112,6 +137,7 @@
       "line": 6,
       "col": 0
     },
+    "declarationKind": "private",
     "importDef": {
       "src": "file:///home/codio/workspace/modules/db.js",
       "imported": "db"

@@ -1,0 +1,6 @@
+
+/* Small screens */
+@import url("./game-form-small.css");
+
+/* Large screens */
+@import url("./game-form-large.css")(min-width: 650px);

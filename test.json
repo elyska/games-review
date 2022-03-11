@@ -1,0 +1,6 @@
+{
+    "imports": {
+        "database": "./test_doubles/db.js",
+        "bcrypt": "./test_doubles/bcrypt.js"
+    }
+}

@@ -1,0 +1,13 @@
+
+section:last-of-type {
+    display: flex;
+}
+
+
+section > p {
+    width: 50%;
+}
+
+section > p:last-of-type {
+    padding-left: 20px;
+}
