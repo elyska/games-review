@@ -6,9 +6,9 @@
  * @module accounts
  */
 
-import { compare, genSalt, hash } from 'https://deno.land/x/bcrypt@v0.2.4/mod.ts'
+import { compare, genSalt, hash } from "bcrypt"
 
-import { db } from './db.js'
+import { db } from "database"
 
 const saltRounds = 10
 const salt = await genSalt(saltRounds)
