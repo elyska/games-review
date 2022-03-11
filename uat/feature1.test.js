@@ -125,7 +125,7 @@ Deno.test('Submitting the game form with missing data     ', async () => {
             await page.type('textarea[name="description"]', 'Space Invaders is a fixed shooter.')
     // AND I click the "Submit" button
             await page.click('input[type="submit"]', { waitUntil: 'networkidle0' })
-    // THEN I should be redirected to the "Home" page
+    // THEN I should see the browser url contains "/add-game"
             await assertEquals(page.url(), url + "add-game", 'not on the form page')
             await browser.close()
 })
