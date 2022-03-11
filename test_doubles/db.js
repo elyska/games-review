@@ -24,6 +24,19 @@ class Db {
         else if (sql.includes('INSERT INTO accounts')) {
             return true
         }
+        else if (sql.includes('SELECT * FROM games WHERE id = 1')) {
+            const game = {
+                id: 1,
+                name: "Space Invaders",
+                publisher: "Atari, Inc.",
+                year: "1981",
+                description: "Space Invaders is a fixed shooter.",
+                image: "images/placeholder.png",
+                creationDate: new Date('2022-03-11T18:08:11.000Z'),
+                username: "doej"
+            }
+            return [game]
+        }
         return [{}]
     }
 }

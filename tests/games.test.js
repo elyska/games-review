@@ -85,7 +85,7 @@ Deno.test({
         year: "1981",
         description: "Space Invaders is a fixed shooter.",
         image: "images/placeholder.png",
-        creationDate: "2022-03-11 18:08:11",
+        creationDate: new Date('2022-03-11T18:08:11.000Z'),
         username: "doej"
     }
     const game = await getGame(1)
