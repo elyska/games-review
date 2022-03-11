@@ -14,5 +14,3 @@ Scenario: Added game appears on the home page
     And I click the "Submit" button
     Then I should be redirected to the "Home" page
     And I should see a "Space Invaders" heading
-    And I should see a "1981" subheading
-    And I should see a placeholder image
