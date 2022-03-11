@@ -63,7 +63,7 @@ Deno.test({
             password: "p455w0rd"
         }
         const returned = await register(data)
-        assertEquals(returned, true, "registration failed")
+        assert(returned, "registration failed")
     })
 
   },
