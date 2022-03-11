@@ -73,3 +73,9 @@ export async function addGame(data, username) {
   
     return true
 }
+
+export async function allGames() {
+    const sql = `SELECT id, name, year, image FROM games;`
+    const games = await db.query(sql)
+    return games
+}
