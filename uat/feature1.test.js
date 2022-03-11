@@ -14,9 +14,11 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 // SCENARIO: Logged in user accessing the Add Game form page
 Deno.test('logged in user accessing the Add Game form page     ', async () => {
     // GIVEN I am logged in
-            const browser = await puppeteer.launch({ headless: true })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50  })
+            const args = [`--window-size=${1000},${800}`]
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
+            await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
@@ -24,8 +26,8 @@ Deno.test('logged in user accessing the Add Game form page     ', async () => {
     // AND I am on the Home page
             await page.goto(url, { waitUntil: 'networkidle0' })
     // WHEN I click the "Add Game" button
-            await page.click('nav figure:nth-child(2)', { waitUntil: 'networkidle0' }) // menu icon
-            //await page.screenshot({ path: './screenshot.png' })
+            //await page.click('nav figure:nth-child(2)', { waitUntil: 'networkidle0' }) // menu icon on small screens
+            await page.screenshot({ path: './screenshot.png' })
             await page.click('a[href="/add-game"]', { waitUntil: 'networkidle0' })
     // THEN I should see a "name" field
             const name = await page.$eval('input[name="name"]', node => node.offsetParent)
@@ -48,16 +50,18 @@ Deno.test('logged in user accessing the Add Game form page     ', async () => {
 // SCENARIO: Accessing the Add Game form page without logging in
 Deno.test('Accessing the Add Game form page without logging in     ', async () => {
     // GIVEN I am not logged in
-            const browser = await puppeteer.launch({ headless: true })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50  })
+            const args = [`--window-size=${1000},${800}`]
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
+            await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'logout', { waitUntil: 'networkidle0' })
     // AND I browse to /add-game
             await page.goto(url + 'add-game', { waitUntil: 'networkidle0' })
     // THEN I should be redirected to the "Home" page
             await assertEquals(page.url(), url, 'not on the homepage')
     // BUT I should not see the "Add game" button
-            await page.click('nav figure:nth-child(2)', { waitUntil: 'networkidle0' }) // menu icon
+           // await page.click('nav figure:nth-child(2)', { waitUntil: 'networkidle0' }) // menu icon on small screens
             const button = await page.$('a[href="/add-game"]')
             await assertEquals(button, null, 'Add Game button is visible for an unlogged user')
             await browser.close()
@@ -66,9 +70,11 @@ Deno.test('Accessing the Add Game form page without logging in     ', async () =
 // SCENARIO: Adding a new game
 Deno.test('Adding a new game     ', async () => {
     // GIVEN I am logged in
-            const browser = await puppeteer.launch({ headless: true })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50  })
+            const args = [`--window-size=${1000},${800}`]
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
+            await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
@@ -100,9 +106,11 @@ Deno.test('Adding a new game     ', async () => {
 // SCENARIO: Submitting the game form with missing data
 Deno.test('Submitting the game form with missing data     ', async () => {
     // GIVEN I am logged in
-            const browser = await puppeteer.launch({ headless: true })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50  })
+            const args = [`--window-size=${1000},${800}`]
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
+            await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
@@ -125,7 +133,7 @@ Deno.test('Submitting the game form with missing data     ', async () => {
             await page.type('textarea[name="description"]', 'Space Invaders is a fixed shooter.')
     // AND I click the "Submit" button
             await page.click('input[type="submit"]', { waitUntil: 'networkidle0' })
-    // THEN I should see the browser url contains "/add-game"
+    // THEN I see the browser url contains "/add-game"
             await assertEquals(page.url(), url + "add-game", 'not on the form page')
             await browser.close()
 })
@@ -133,9 +141,11 @@ Deno.test('Submitting the game form with missing data     ', async () => {
 // SCENARIO: Exceeding the maximum length of 60 in an input field
 Deno.test('Exceeding the maximum length of 60 in an input field     ', async () => {
     // GIVEN I am logged in
-            const browser = await puppeteer.launch({ headless: true })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 10  })
+            const args = [`--window-size=${1000},${800}`]
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
+            await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
