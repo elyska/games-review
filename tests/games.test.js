@@ -1,9 +1,9 @@
 
 /* games.test.js */
 
-import { assertEquals, assert, fail } from 'https://deno.land/std@0.79.0/testing/asserts.ts'
+import { assertEquals, assert, assertExists, fail } from 'https://deno.land/std@0.79.0/testing/asserts.ts'
 
-import { addGame } from '../modules/games.js'
+import { addGame, allGames } from '../modules/games.js'
 
 // code based on https://deno.land/manual@v1.19.2/testing/sanitizers
 Deno.test({
@@ -60,6 +60,16 @@ Deno.test({
             assertEquals(err.message, "invalid game data")
         }
     })
+  },
+  sanitizeResources: false,
+  sanitizeOps: false
+})
+
+Deno.test({
+  name: "get all games",
+  async fn() {
+    const games = await allGames()
+    assertExists(games, "returned null or undefined")
   },
   sanitizeResources: false,
   sanitizeOps: false
