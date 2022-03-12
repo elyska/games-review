@@ -11,6 +11,7 @@ GRANT INSERT, SELECT, UPDATE, DELETE ON website.* TO websiteuser;
 
 DROP TABLE IF EXISTS accounts;
 DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS reviews;
 
 CREATE TABLE IF NOT EXISTS accounts (
   id MEDIUMINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -41,3 +42,11 @@ INSERT INTO games(name, publisher, year, description, image, creationDate, usern
   ("Missile Command", "Arcade", "1980", "The game is played by moving a crosshair across the sky background via a trackball and pressing one of three buttons to launch a counter-missile from the appropriate battery.", "images/placeholder.png", "2022-03-11 18:08:11", "doej"),
   ("The Sims", "Electronic Arts", "2000", "The Sims is a series of life simulation video games developed by Maxis and published by Electronic Arts.", "images/placeholder.png", "2022-03-11 18:08:11", "doej"),
   ("3D Pinball", "Microsoft", "1995", "3D Pinball for Windows – Space Cadet is a version of the Space Cadet table bundled with Microsoft Windows.", "images/placeholder.png", "2022-03-11 18:08:11", "doej");
+
+CREATE TABLE IF NOT EXISTS reviews (
+  id MEDIUMINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  rating TINYINT NOT NULL,
+  review TEXT NOT NULL,
+  creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  username VARCHAR(25) NOT NULL
+);
