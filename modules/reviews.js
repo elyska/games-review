@@ -16,6 +16,35 @@ import Ajv from '../ajv.js'
  * @throws Will throw an error if the data validation fails.
  */
 export async function addReview(data, username) {
-    
+    // data validation
+    const schema = {
+        title: "Add Review",
+        desription: "JSON schema for validation of review data",
+        type: "object",
+        properties: {
+            rating: {
+                type: "number",
+                max: 5,
+                min: 0
+            },
+            review: {
+                type: "string"
+            }
+        }
+    }
+
+    const ajv = new Ajv({ allErrors: true })
+    const validate = ajv.compile(schema)
+
+    const valid = validate(data)
+    if (valid === false) {
+        console.log(validate.errors)
+        throw new Error("invalid review data")
+    }
+
+    const sql = `INSERT INTO reviews(rating, review, username) VALUES(${data.rating}, "${data.review}", "${username}");`
+
+    await db.query(sql)
+
     return true
 }
