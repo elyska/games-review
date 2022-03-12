@@ -24,6 +24,22 @@ class Db {
         else if (sql.includes('INSERT INTO accounts')) {
             return true
         }
+        else if (sql.includes('SELECT * FROM games WHERE id = "1"')) {
+            const game = {
+                id: 1,
+                name: "Chrome Dino",
+                publisher: "Google",
+                year: "2014",
+                description: "The player guides a pixelated Tyrannosaurus rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score.",
+                image: "images/placeholder.png",
+                creationDate: new Date('2022-03-11T18:08:11.000Z'),
+                username: "doej"
+            }
+            return [game]
+        }
+        else if (sql.includes('SELECT * FROM games WHERE id = "x"')) {
+            return []
+        }
         return [{}]
     }
 }

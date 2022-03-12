@@ -2,17 +2,18 @@
 <main>
 	{{#if games}}
 		{{#each games}}
-			<a href="">
-					<article>
+			
+				<article>
 					<figure>
 						<img src="{{image}}" alt="Game box cover">
 					</figure>
 					<section>
 						<h1>{{name}}</h1>
 						<p>{{year}}</p>
+						<a href="/games/{{id}}">Details</a>	
 					</section>
 				</article>
-			</a>
+			
 		{{/each}}
 	{{else}}
 		<p>There are currently no games.</p>

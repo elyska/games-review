@@ -1,0 +1,17 @@
+<main>
+    <h1>{{game.name}}</h1>
+    <section>
+        <h2>Publisher</h2>
+        <p>{{game.publisher}}</p>
+        <h2>Year of the Release</h2>
+        <p>{{game.year}}</p>
+        <h2>Description</h2>
+        <p>{{{markdownToHtml game.description}}}</p>  
+    </section>
+
+    <section>
+        <p>{{game.username}}</p>
+        <p>-</p>
+        <p>{{toDate game.creationDate}}</p>
+    </section>
+</main>

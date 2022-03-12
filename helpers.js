@@ -8,6 +8,12 @@ const markdownToHtml = (text) => {
     return newText.content
 }
 
+const toDate = (timestamp) => {
+    const date = timestamp.getDate().toString() + "/" + (timestamp.getMonth() + 1).toString() + "/" + timestamp.getFullYear().toString()
+    return date
+}
+
 export const helpers = {
-    markdownToHtml: markdownToHtml
+    markdownToHtml: markdownToHtml,
+    toDate: toDate
 }

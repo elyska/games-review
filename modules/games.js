@@ -26,7 +26,6 @@ import Ajv from '../ajv.js'
  * @returns {boolean}
  * @throws Will throw an error if the data validation fails.
  */
-
 export async function addGame(data, username) {
     // data validation
     const schema = {
@@ -82,4 +81,17 @@ export async function allGames() {
     const sql = `SELECT id, name, year, image FROM games;`
     const games = await db.query(sql)
     return games
+}
+/**
+ * Gets a game with a matching id from the database
+ * @param {number} id
+ * @returns {Object} game
+ * @throws Will throw an error if the id does not exist in the database.
+ */
+export async function getGame(id) {
+    const sql = `SELECT * FROM games WHERE id = "${id}";`
+    const record = await db.query(sql)
+    if(record.length === 0) throw new Error(`game with id "${id}" not found`)
+    const game = record[0]
+    return game
 }
