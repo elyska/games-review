@@ -22,23 +22,23 @@ Deno.test('View Space Invaders datails page     ', async () => {
             await page.goto(url, { waitUntil: 'networkidle0' })
     // WHEN I click "Details" button next to the "Space Invaders" heading
             await page.click('a[href="/games/1"]', { waitUntil: 'networkidle0' })
-    // THEN I should see "Space Invaders" heading
+    // THEN I should see "Chrome Dino" heading
             const name = await page.$eval('h1', node => node.innerText)
-            await assertEquals(name, "Space Invaders", 'no "Space Invaders" heading')
-    // AND I should see "Atari, Inc." text
+            await assertEquals(name, "Chrome Dino", 'no "Chrome Dino" heading')
+    // AND I should see "Google" text
             const publisher = await page.$eval('main p:nth-of-type(1)', node => node.innerText)
-            await assertEquals(publisher, "Atari, Inc.", 'no matching publisher')
-    // AND I should see "1981" text
+            await assertEquals(publisher, "Google", 'no matching publisher')
+    // AND I should see "2014" text
             const year = await page.$eval('main p:nth-of-type(2)', node => node.innerText)
-            await assertEquals(year, "1981", 'no matching year')
-    // AND I should see "Space Invaders is a fixed shooter." text
+            await assertEquals(year, "2014", 'no matching year')
+    // AND I should see "The player guides a pixelated Tyrannosaurus rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score." text
             const desc = await page.$eval('main p:nth-of-type(3)', node => node.innerText)
-            await assertEquals(desc, "Space Invaders is a fixed shooter.", 'no matching description')
+            await assertEquals(desc, "The player guides a pixelated Tyrannosaurus rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score.", 'no matching description')
     // AND I should see "doej" text
             const user = await page.$eval('main section:nth-of-type(2) p:nth-of-type(1)', node => node.innerText)
             await assertEquals(user, "doej", 'no matching username')
     // AND I should see "11/3/2022" text
-            const date = await page.$eval('main section:nth-of-type(2) p:nth-of-type(2)', node => node.innerText)
+            const date = await page.$eval('main section:nth-of-type(2) p:nth-of-type(3)', node => node.innerText)
             await assertEquals(date, "11/3/2022", 'no "11/3/2022" date')
             await browser.close()
 })
