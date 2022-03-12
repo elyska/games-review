@@ -42,3 +42,23 @@ Deno.test('View Space Invaders datails page     ', async () => {
             await assertEquals(date, "11/3/2022", 'no "11/3/2022" date')
             await browser.close()
 })
+
+// SCENARIO: Browse to invalid game
+Deno.test('Browse to invalid game     ', async () => {
+    // GIVEN I am on the "Home" page
+            const args = [`--window-size=${1000},${800}`]
+            const browser = await puppeteer.launch({ headless: true, args })
+            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const page = await browser.newPage()
+            await page.setViewport({ width: 1000, height: 800 })
+            await page.goto(url, { waitUntil: 'networkidle0' })
+    // WHEN I browse to "/games/abc"
+            await page.goto(url + "games/abc", { waitUntil: 'networkidle0' })
+    // THEN I should see "404" heading
+            const h1 = await page.$eval('main h1', node => node.innerText)
+            await assertEquals(h1, "404", 'no "404" heading')
+    // AND I should see "PAGE NOT FOUND" text
+            const p = await page.$eval('main p', node => node.innerText)
+            await assertEquals(p, "PAGE NOT FOUND", 'no "PAGE NOT FOUND" text')
+            await browser.close()
+})

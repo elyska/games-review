@@ -13,3 +13,10 @@ Scenario: View Chrome Dino datails page
     And I should see "The player guides a pixelated Tyrannosaurus rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score." text 
     And I should see "doej" text 
     And I should see "11/3/2022" text
+
+@invalidId
+Scenario: Browse to invalid game
+    Given I am on the "Home" page
+    When I browse to "/games/abc"
+    Then I should see "404" heading
+    And I should see "PAGE NOT FOUND" text
