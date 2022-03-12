@@ -87,10 +87,12 @@ export async function allGames() {
  * Gets a game with a matching id from the database
  * @param {number} id
  * @returns {Object} game
+ * @throws Will throw an error if the id does not exist in the database.
  */
 export async function getGame(id) {
-    const sql = `SELECT * FROM games WHERE id = ${id};`
+    const sql = `SELECT * FROM games WHERE id = "${id}";`
     const record = await db.query(sql)
+    if(record.length === 0) throw new Error(`game with id "${id}" not found`)
     const game = record[0]
     return game
 }

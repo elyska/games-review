@@ -77,19 +77,32 @@ Deno.test({
 
 Deno.test({
   name: "get a specific game",
-  async fn() {
-    const expectedGame = {
+  async fn(test) {
+
+    await test.step("valid id", async () => {
+      const expectedGame = {
         id: 1,
-        name: "Space Invaders",
-        publisher: "Atari, Inc.",
-        year: "1981",
-        description: "Space Invaders is a fixed shooter.",
+        name: "Chrome Dino",
+        publisher: "Google",
+        year: "2014",
+        description: "The player guides a pixelated Tyrannosaurus rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score.",
         image: "images/placeholder.png",
         creationDate: new Date('2022-03-11T18:08:11.000Z'),
         username: "doej"
-    }
-    const game = await getGame(1)
-    assertEquals(game, expectedGame, "invalid game details")
+      }
+      const game = await getGame(1)
+      assertEquals(game, expectedGame, "invalid game details")
+    })
+
+    await test.step("invalid id", async () => {
+      try {
+        await getGame("x")
+        fail("failed to throw an exception")
+      }
+      catch (err) {
+        assertEquals(err.message, 'game with id "x" not found')
+      }
+    })
   },
   sanitizeResources: false,
   sanitizeOps: false
