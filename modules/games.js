@@ -26,7 +26,6 @@ import Ajv from '../ajv.js'
  * @returns {boolean}
  * @throws Will throw an error if the data validation fails.
  */
-
 export async function addGame(data, username) {
     // data validation
     const schema = {

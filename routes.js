@@ -113,7 +113,6 @@ router.post('/login', async context => {
 router.get('/games/:id', async context => {
 	const authorised = context.cookies.get('authorised')
 	const id = context.params.id
-	console.log(id)
 	try {
 		const game = await getGame(id)
 		const data = { authorised, title: game.name, gameDetail: true, game }
@@ -122,10 +121,10 @@ router.get('/games/:id', async context => {
 	}
 	catch (err) {
 		console.log(err.message)
-		const body = await handle.renderView('404')
+		const data = { title: "404"}
+		const body = await handle.renderView('404', data)
 		context.response.body = body
 	}
-	
 })
 
 export default router
