@@ -14,4 +14,32 @@
         <p>-</p>
         <p>{{toDate game.creationDate}}</p>
     </section>
+
+    <h1>Reviews</h1>
+    <section>
+        <form method="POST" action="/add-review">
+            <fieldset>
+                <legend>Add a Review</legend>
+                <p>
+			        <label for="rating">Rating</label><br />
+			        <strong>0</strong>
+                    <input type="range" min="0" max="5" name="rating">
+                    <strong>5</strong>
+                </p>
+
+                <p>
+			        <label for="review">Review</label><br />
+		            <textarea name="review" rows="10" placeholder="This textbox supports markdown formatting. You will see a live preview below the box." required></textarea>
+                </p>
+                <p></p>
+
+                <p>
+                    <input type="submit" value="Add review">
+                </p>
+            </fieldset>
+        </form>
+    </section>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="module" src="/review-form.js"></script>

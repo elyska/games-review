@@ -126,5 +126,4 @@ router.get('/games/:id', async context => {
 		context.response.body = body
 	}
 })
-
 export default router
