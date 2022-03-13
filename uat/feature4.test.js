@@ -44,11 +44,11 @@ Deno.test('Review Pac-Man     ', async () => {
                 for (const node of nodes) if (node.innerText === "user2") return node.innerText
             })
             await assertEquals(user, 'user2', 'no "user2" text')
-    // AND I should see "Rating: 5" text
+    // AND I should see "Rating: 5 out of 5" text
             const rating = await page.$$eval('main p', nodes => {
-                for (const node of nodes) if (node.innerText === "Rating: 5") return node.innerText
+                for (const node of nodes) if (node.innerText === "Rating: 5 out of 5") return node.innerText
             })
-            await assertEquals(rating, 'Rating: 5', 'no "Rating: 5" text')
+            await assertEquals(rating, 'Rating: 5 out of 5', 'no "Rating: 5 out of 5" text')
     // AND I should see "Fun game" text
             const review = await page.$$eval('main p', nodes => {
                 for (const node of nodes) if (node.innerText === "Fun game") return node.innerText

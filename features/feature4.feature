@@ -12,5 +12,5 @@ Scenario: Review Pac-Man
     And I click "Submit" button
     Then I should be on the "Pac-Man" details page
     And I should see "user2" text
-    And I should see "Rating: 5" text
+    And I should see "Rating: 5 out of 5" text
     And I should see "Fun game" text
