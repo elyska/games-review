@@ -15,7 +15,7 @@ Deno.test({
             review: "Good game!",
             username: "user1",
             creationDate: new Date('2022-03-12T18:08:11.000Z'),
-            productId: 1
+            gameId: 1
         }
         const username = "doej"
         const returned = await addReview(data, username)
@@ -28,7 +28,7 @@ Deno.test({
             review: 123,
             username: "user1",
             creationDate: new Date('2022-03-12T18:08:11.000Z'),
-            productId: 1
+            gameId: 1
         }
         const username = "doej"
 

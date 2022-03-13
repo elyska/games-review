@@ -16,6 +16,9 @@ import Ajv from '../ajv.js'
  * @throws Will throw an error if the data validation fails.
  */
 export async function addReview(data, username) {
+    data.rating = parseInt(data.rating)
+    data.gameId = parseInt(data.gameId)
+
     // data validation
     const schema = {
         title: "Add Review",
@@ -30,7 +33,7 @@ export async function addReview(data, username) {
             review: {
                 type: "string"
             },
-            productId: {
+            gameId: {
                 type: "number"
             }
         }
@@ -45,7 +48,7 @@ export async function addReview(data, username) {
         throw new Error("invalid review data")
     }
 
-    const sql = `INSERT INTO reviews(rating, review, username, productId) VALUES(${data.rating}, "${data.review}", "${username}", ${data.productId});`
+    const sql = `INSERT INTO reviews(rating, review, username, gameId) VALUES(${data.rating}, "${data.review}", "${username}", ${data.gameId});`
 
     await db.query(sql)
 

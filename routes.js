@@ -8,6 +8,7 @@ import { resize } from 'https://deno.land/x/deno_image@v0.0.3/mod.ts'
 
 import { login, register } from './modules/accounts.js'
 import { addGame, allGames, getGame } from './modules/games.js'
+import { addReview } from './modules/reviews.js'
 
 const handle = new Handlebars()
 
@@ -126,4 +127,19 @@ router.get('/games/:id', async context => {
 		context.response.body = body
 	}
 })
+
+router.post('/add-review', async context => {
+	console.log('POST /add-review')
+	const authorised = context.cookies.get('authorised')
+	const body = context.request.body({ type: 'form' })
+	const value = await body.value
+	const obj = Object.fromEntries(value)
+	console.log(obj)
+
+	await addReview(obj, authorised)
+
+	context.response.redirect(`/games/${obj.gameId}`)
+
+})
+
 export default router
