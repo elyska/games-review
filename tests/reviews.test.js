@@ -3,7 +3,7 @@
 
 import { assertEquals, assert, assertExists, fail } from 'https://deno.land/std@0.79.0/testing/asserts.ts'
 
-import { addReview } from '../modules/reviews.js'
+import { addReview, allReviews } from '../modules/reviews.js'
 
 Deno.test({
   name: "add new review",
@@ -41,6 +41,16 @@ Deno.test({
         }
     })
 
+  },
+  sanitizeResources: false,
+  sanitizeOps: false
+})
+
+Deno.test({
+  name: "get all review of a game",
+  async fn() {
+    const reviews = await allReviews()
+    assertExists(reviews, "returned null or undefined")
   },
   sanitizeResources: false,
   sanitizeOps: false
