@@ -64,6 +64,6 @@ INSERT INTO reviews(rating, review, username, gameId)
   (3, "Quite fun", "user2", 3),
   (5, "A very **creative** game. You can build houses etc. also you can set your goal. For example you can start as a poor sim and then get rich, you can fulfill the goal of aspiration and more.", "doej", 4),
   (5, "My 7 year old daughter has been playing for at least a year now. She really enjoys it.", "user3", 4),
-  (2, "Too addictive", "user1", 5),
-  (4, "The best thing that Space Cadet Pinball has going for it is that it's free.", "user1", 5),
+  (2, "Too addictive", "user2", 5),
+  (4, "The best thing that Space Cadet Pinball has going for it is that it's free.", "user3", 5),
   (0, "I don't like it", "user1", 5);
