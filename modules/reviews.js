@@ -9,6 +9,14 @@ import { db } from "database"
 import Ajv from '../ajv.js'
 
 /**
+ * An object containing review details
+ * @typedef {Object} Review
+ * @property {number} rating - rating from 0 to 5
+ * @property {string} review - a text comment to the game
+ * @property {number} gameId - id of the game to which the review belongs
+ */
+
+/**
  * Saves a review in the database
  * @param {Object} data
  * @param {string} username
