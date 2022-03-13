@@ -14,3 +14,9 @@ Scenario: Review Pac-Man
     And I should see "user2" text
     And I should see "Rating: 5 out of 5" text
     And I should see "Fun game" text
+
+@loggedOut
+Scenario: Logged out user
+    Given I am logged out
+    When I browse to "/games/1"
+    Then I should not see a form
