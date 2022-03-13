@@ -29,6 +29,9 @@ export async function addReview(data, username) {
             },
             review: {
                 type: "string"
+            },
+            productId: {
+                type: "number"
             }
         }
     }
@@ -42,7 +45,7 @@ export async function addReview(data, username) {
         throw new Error("invalid review data")
     }
 
-    const sql = `INSERT INTO reviews(rating, review, username) VALUES(${data.rating}, "${data.review}", "${username}");`
+    const sql = `INSERT INTO reviews(rating, review, username, productId) VALUES(${data.rating}, "${data.review}", "${username}", ${data.productId});`
 
     await db.query(sql)
 
