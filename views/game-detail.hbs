@@ -27,6 +27,7 @@
         </section>
     {{/each}}
     <section>
+        {{#if authorised}}
         <form method="POST" action="/add-review">
             <fieldset>
                 <legend>Add a Review</legend>
@@ -48,6 +49,9 @@
                 </p>
             </fieldset>
         </form>
+        {{else}}
+        <p>Log In to add a review</p>
+        {{/if}}
     </section>
 </main>
 
