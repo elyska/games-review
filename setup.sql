@@ -51,3 +51,19 @@ CREATE TABLE IF NOT EXISTS reviews (
   username VARCHAR(25) NOT NULL,
   gameId MEDIUMINT UNSIGNED NOT NULL
 );
+
+INSERT INTO reviews(rating, review, username, gameId)
+	VALUES(4, "Exciting game", "user1", 1),
+  (5, "My favourite game", "doej", 1),
+  (5, "Fun to play when you don't have a connection", "user2", 1),
+  (4, "This is the game that started it all, it truly was the first in video game franchises, icons, and just everything, without this little guy we wouldn't be where we are now. Pac Man was more than just a game, it was a *phenomenon* as it has become a staple in the 80's decade.", "user3", 2),
+  (4, "Good game", "doej", 2),
+  (0, "Boring game", "user1", 2),
+  (3, "Not the best", "user3", 3),
+  (1, "I don't like it", "user1", 3),
+  (3, "Quite fun", "user2", 3),
+  (5, "A very **creative** game. You can build houses etc. also you can set your goal. For example you can start as a poor sim and then get rich, you can fulfill the goal of aspiration and more.", "doej", 4),
+  (5, "My 7 year old daughter has been playing for at least a year now. She really enjoys it.", "user3", 4),
+  (2, "Too addictive", "user1", 5),
+  (4, "The best thing that Space Cadet Pinball has going for it is that it's free.", "user1", 5),
+  (0, "I don't like it", "user1", 5);
