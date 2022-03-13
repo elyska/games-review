@@ -47,9 +47,10 @@ Deno.test({
 })
 
 Deno.test({
-  name: "get all review of a game",
+  name: "get all reviews of a game",
   async fn() {
-    const reviews = await allReviews()
+    const reviews = await allReviews(1)
+    console.log(reviews)
     assertExists(reviews, "returned null or undefined")
   },
   sanitizeResources: false,

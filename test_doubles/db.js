@@ -37,7 +37,7 @@ class Db {
             }
             return [game]
         }
-        else if (sql.includes('SELECT * FROM games WHERE id = "x"')) {
+        else if (sql.includes('SELECT * FROM games WHERE id = "x"') || sql.includes('SELECT * FROM reviews WHERE gameId = ')) {
             return []
         }
         return [{}]
