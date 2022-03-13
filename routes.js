@@ -8,7 +8,7 @@ import { resize } from 'https://deno.land/x/deno_image@v0.0.3/mod.ts'
 
 import { login, register } from './modules/accounts.js'
 import { addGame, allGames, getGame } from './modules/games.js'
-import { addReview } from './modules/reviews.js'
+import { addReview, allReviews } from './modules/reviews.js'
 
 const handle = new Handlebars()
 
@@ -116,7 +116,9 @@ router.get('/games/:id', async context => {
 	const id = context.params.id
 	try {
 		const game = await getGame(id)
-		const data = { authorised, title: game.name, gameDetail: true, game }
+		const reviews = await allReviews(id)
+		console.log(reviews)
+		const data = { authorised, title: game.name, gameDetail: true, game, reviews }
 		const body = await handle.renderView('game-detail', data)
 		context.response.body = body
 	}
@@ -134,7 +136,6 @@ router.post('/add-review', async context => {
 	const body = context.request.body({ type: 'form' })
 	const value = await body.value
 	const obj = Object.fromEntries(value)
-	console.log(obj)
 
 	await addReview(obj, authorised)
 
