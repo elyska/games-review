@@ -62,3 +62,14 @@ export async function addReview(data, username) {
 
     return true
 }
+
+/**
+ * Returns all reviews of a game
+ * @param {number} gameId
+ * @returns {Array.<Object>}
+ */
+export async function allReviews(gameId) {
+    const sql = `SELECT * FROM reviews WHERE gameId = ${gameId};`
+    const records = await db.query(sql)
+    return records
+}
