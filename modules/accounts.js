@@ -44,7 +44,7 @@ export async function login(data) {
  * @returns {boolean}
  */
 export async function register(data) {
-	const password = await hash(data.password, salt)
+	let password = await hash(data.password, salt)
 	const sql = `INSERT INTO accounts(user, pass) VALUES("${data.username}", "${password}")`
 	console.log(sql)
 	await db.query(sql)
