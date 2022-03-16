@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -e
+#!/bin/sh
 
 echo "CODE LINTING"
 deno lint --config deno.json
