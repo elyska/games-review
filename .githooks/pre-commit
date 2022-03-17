@@ -2,3 +2,7 @@
 
 echo "CODE LINTING"
 deno lint --config deno.json
+
+echo "UNIT TESTING"
+deno test --allow-all --import-map test.json ./tests
+deno test --allow-all --unstable --import-map map.json ./tests
