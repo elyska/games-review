@@ -3,3 +3,27 @@ section:nth-of-type(2) p{
     color: var(--typeface-dark);
     display: inline-block;
 }
+
+textarea {
+    width: 100%;
+}
+
+/* reviews */
+main section:not(section:last-of-type):not(section:nth-of-type(1)):not(section:nth-of-type(2)) {
+    background: var(--background-dark);
+    padding: 0 20px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+main section:not(section:last-of-type):not(section:nth-of-type(1)):not(section:nth-of-type(2)) p:first-of-type{ /* user */
+    color: var(--primary);
+}
+main section:not(section:last-of-type):not(section:nth-of-type(1)):not(section:nth-of-type(2)) p:last-of-type{ /* date */
+    text-align: right;
+    color: var(--typeface-dark);
+}
+
+main section img {
+    float: left;
+    margin: 13px 10px 0 0;
+}

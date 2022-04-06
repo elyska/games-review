@@ -14,4 +14,46 @@
         <p>-</p>
         <p>{{toDate game.creationDate}}</p>
     </section>
+
+    <h1>Reviews</h1>
+
+    {{#each reviews}}
+        <section>
+            <img src="/images/account.svg" alt="User" >
+            <p>{{username}}</p>
+            <p>Rating: {{rating}} out of 5</p>
+            <p>{{{markdownToHtml review}}}</p>
+            <p>{{toDate creationDate}}</p>
+        </section>
+    {{/each}}
+    <section>
+        {{#if authorised}}
+        <form method="POST" action="/add-review">
+            <fieldset>
+                <legend>Add a Review</legend>
+                <p>
+			        <label for="rating">Rating</label><br />
+			        <strong>0</strong>
+                    <input type="range" min="0" max="5" name="rating">
+                    <strong>5</strong>
+                </p>
+
+                <p>
+			        <label for="review">Review</label><br />
+		            <textarea name="review" rows="10" placeholder="This textbox supports markdown formatting. You will see a live preview below the box."></textarea>
+                </p>
+                <p></p>
+                <input type="hidden" name="gameId" value="{{game.id}}">
+                <p>
+                    <input type="submit" value="Add review">
+                </p>
+            </fieldset>
+        </form>
+        {{else}}
+        <p>Log In to add a review</p>
+        {{/if}}
+    </section>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="module" src="/review-form.js"></script>

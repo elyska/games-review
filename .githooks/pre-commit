@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# aborts script if there is an error
+set -e
+
+echo "PRE-COMMIT"
+
+echo "CODE LINTING"
+# checks code quality
+deno lint --config deno.json
+
+echo "UNIT TESTING"
+# runs unit tests
+deno test --allow-all --import-map test.json ./tests
+
+echo "INTEGRATION TESTING"
+# runs integration tests
+deno test --allow-all --unstable --import-map map.json ./tests

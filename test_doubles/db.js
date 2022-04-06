@@ -21,7 +21,7 @@ class Db {
             const record = [ {pass: "$2b$10$gL33obKAFUT5DK3pEbh72OIHztsWBniBBh.PdeKOrF1yr5KFAsdZO"} ]
             return record
         }
-        else if (sql.includes('INSERT INTO accounts')) {
+        else if (sql.includes('INSERT INTO')) {
             return true
         }
         else if (sql.includes('SELECT * FROM games WHERE id = "1"')) {
@@ -37,7 +37,7 @@ class Db {
             }
             return [game]
         }
-        else if (sql.includes('SELECT * FROM games WHERE id = "x"')) {
+        else if (sql.includes('SELECT * FROM games WHERE id = "x"') || sql.includes('SELECT * FROM reviews WHERE gameId = ')) {
             return []
         }
         return [{}]
