@@ -3,4 +3,4 @@
 GREEN='\033[0;32m'
 
 echo "POST COMMIT"
-echo "${GREEN}You have successfully commited"
+echo -e "${GREEN}You have successfully commited"
