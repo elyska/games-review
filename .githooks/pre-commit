@@ -1,8 +1,12 @@
 #!/bin/sh
 
+set -e
+
 echo "CODE LINTING"
 deno lint --config deno.json
 
 echo "UNIT TESTING"
 deno test --allow-all --import-map test.json ./tests
+
+echo "INTEGRATION TESTING"
 deno test --allow-all --unstable --import-map map.json ./tests

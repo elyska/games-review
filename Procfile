@@ -1,1 +1,1 @@
-web: deno run --allow-all --unstable index.js --port=${PORT}
+web: deno run --allow-all --unstable --import-map map.json index.js --port=${PORT}
