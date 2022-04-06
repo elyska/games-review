@@ -149,5 +149,12 @@ router.get('/cookie-policy', async context => {
 	context.response.body = body
 })
 
+router.get('/terms-of-use', async context => {
+	const authorised = context.cookies.get('authorised')
+	const data = { authorised, title: "Terms of Use" }
+	const body = await handle.renderView('terms', data)
+	context.response.body = body
+})
+
 
 export default router

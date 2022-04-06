@@ -19,10 +19,10 @@ const connectionData = {
     db: 'website'
   },
   '/app': {
-		hostname: 'HOSTNAME',
-    username: 'USERNAME',
-    password: 'PASSWORD',
-    db: 'DATABASE'
+	hostname: 'sql11.freesqldatabase.com',
+    username: 'sql11484064',
+    password: 'LbVtgJnuQp',
+    db: 'sql11484064'
   }
 }
 
