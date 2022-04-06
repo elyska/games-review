@@ -4,4 +4,5 @@ GREEN='\033[0;32m'
 RESET_COLOUR='\033[0m'
 
 echo "POST COMMIT"
+# prints a message in green
 echo -e "${GREEN}You have successfully commited${RESET_COLOUR}"

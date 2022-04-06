@@ -3,8 +3,6 @@
 # aborts script if there is an error
 set -e
 
-echo "PRE-COMMIT"
-
 echo "CODE LINTING"
 # checks code quality
 deno lint --config deno.json

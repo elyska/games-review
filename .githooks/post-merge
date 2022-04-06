@@ -1,0 +1,8 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+RESET_COLOUR='\033[0m'
+
+echo "POST MERGE"
+# prints a message in green
+echo -e "${GREEN}Merge was successful. No conflicts.${RESET_COLOUR}"
