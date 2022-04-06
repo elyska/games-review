@@ -1,3 +1,6 @@
 #!/bin/bash
 
+GREEN='\033[0;32m'
+
 echo "POST COMMIT"
+echo "${GREEN}You have successfully commited"
