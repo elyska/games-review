@@ -140,7 +140,14 @@ router.post('/add-review', async context => {
 	await addReview(obj, authorised)
 
 	context.response.redirect(`/games/${obj.gameId}`)
-
 })
+
+router.get('/cookie-policy', async context => {
+	const authorised = context.cookies.get('authorised')
+	const data = { authorised, title: "Cookie Policy" }
+	const body = await handle.renderView('cookies', data)
+	context.response.body = body
+})
+
 
 export default router
