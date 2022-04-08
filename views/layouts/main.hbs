@@ -7,6 +7,11 @@
 
 {{{ body }}}
 
+{{#unless accepted}}
+    {{> cookie}}
+    <script type="module" src="/edit-cookies.js"></script>
+{{/unless}}
+
 {{#unless noNav}}
     <script type="module" src="/nav.js"></script>
 {{/unless}}

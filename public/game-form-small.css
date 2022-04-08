@@ -1,9 +1,9 @@
 
-form input, textarea {
+main form input, textarea {
     width: 100%;
 }
 
-label {
+main label {
     font-weight: bold;
     color: var(--typeface-dark);
 }
