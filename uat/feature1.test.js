@@ -14,9 +14,9 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 // SCENARIO: Logged in user accessing the Add Game form page
 Deno.test('logged in user accessing the Add Game form page     ', async () => {
     // GIVEN I am logged in
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
@@ -44,15 +44,16 @@ Deno.test('logged in user accessing the Add Game form page     ', async () => {
     // AND I should see an "image" file input
             const upload = await page.$eval('input[name="image"]', node => node.offsetParent)
             await assertNotEquals(upload, null, 'upload field not found')
+            await page.waitForTimeout(3000)
             await browser.close()
 })
 
 // SCENARIO: Accessing the Add Game form page without logging in
 Deno.test('Accessing the Add Game form page without logging in     ', async () => {
     // GIVEN I am not logged in
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'logout', { waitUntil: 'networkidle0' })
@@ -70,15 +71,16 @@ Deno.test('Accessing the Add Game form page without logging in     ', async () =
 // SCENARIO: Adding a new game
 Deno.test('Adding a new game     ', async () => {
     // GIVEN I am logged in
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
             await page.click('input[type="submit"]', { waitUntil: 'networkidle0' })
+            await page.click('form[action="/accept-cookies"] button', { waitUntil: 'networkidle0' })
     // AND I am on the "Add Game" form page
             await page.goto(url + 'add-game', { waitUntil: 'networkidle0' })
     // WHEN I fill in "name" with "Space Invaders"
@@ -106,9 +108,9 @@ Deno.test('Adding a new game     ', async () => {
 // SCENARIO: Submitting the game form with missing data
 Deno.test('Submitting the game form with missing data     ', async () => {
     // GIVEN I am logged in
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
@@ -141,15 +143,16 @@ Deno.test('Submitting the game form with missing data     ', async () => {
 // SCENARIO: Exceeding the maximum length of 60 in an input field
 Deno.test('Exceeding the maximum length of 60 in an input field     ', async () => {
     // GIVEN I am logged in
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
             await page.click('input[type="submit"]', { waitUntil: 'networkidle0' })
+            await page.click('form[action="/accept-cookies"] button', { waitUntil: 'networkidle0' })
     // AND I am on the "Add Game" form page
             await page.goto(url + 'add-game', { waitUntil: 'networkidle0' })
     // WHEN I fill in "name" with "a" 61 times

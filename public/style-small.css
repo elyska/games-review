@@ -19,6 +19,9 @@ h1 {
 
 a {
     color: var(--typeface);
+}
+a:hover {
+    color: var(--typeface);
     text-decoration: none;
 }
 
@@ -29,9 +32,47 @@ main {
     margin-bottom: 30px;
 } 
 
+aside {
+    background: var(--background-dark);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 0 20px 20px 20px;
+}
+aside article:last-of-type {
+    display: none;
+}
+aside button {
+    margin-right: 10px;
+    border: 2px solid var(--secondary);
+}
+aside button:hover {
+    border: 2px solid var(--secondary-dark) !important;
+}
+aside section > button {
+    border: 2px solid var(--secondary);
+    background-color: transparent !important;
+}
+
+aside section {
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: var(--primary);
+}
+footer a {
+    margin: 10px;
+}
+
 /* forms */
 
-input:not(input[type="range"]), textarea {
+input:not(input[type="range"]), textarea, button {
     border: none;
     outline: none;
     box-sizing: border-box;
@@ -47,7 +88,7 @@ input:not(input[type="range"]):focus, textarea:focus {
     /*outline: 3px solid var(--primary);*/
 }
 
-input[type="submit"] {
+input[type="submit"], button {
     outline: none !important;
     background-color: var(--secondary) !important;
     color: var(--typeface) !important;
@@ -56,7 +97,7 @@ input[type="submit"] {
     transition: background-color 0.2s
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, button:hover {
     background-color: var(--secondary-dark) !important;
     cursor: pointer;
 }
@@ -70,6 +111,9 @@ header {
 nav {
     width: 80%;
     margin: auto;
+}
+nav a {
+    text-decoration: none;
 }
 nav figure img {
     width: 50px;

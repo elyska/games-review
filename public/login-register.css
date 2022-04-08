@@ -11,7 +11,7 @@ main img:hover {
     cursor: pointer;
 }
 
-form input:not(input[type="submit"]) {
+main form input:not(input[type="submit"]) {
     width: 200px;
 }
 

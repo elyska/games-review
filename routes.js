@@ -17,21 +17,23 @@ const router = new Router()
 // the routes defined here
 router.get('/', async context => {
 	const authorised = context.cookies.get('authorised')
+	const accepted = context.cookies.get('accepted')
 	const games = await allGames()
-	const data = { authorised, title: "Home", games, home: true }
+	const data = { authorised, title: "Home", games, home: true, accepted }
 	const body = await handle.renderView('home', data)
 	context.response.body = body
 })
 
 router.get('/add-game', async context => {
 	const authorised = context.cookies.get('authorised')
+	const accepted = context.cookies.get('accepted')
 	if (authorised === undefined) context.response.redirect('/')
 
 	// get current year
 	const today = new Date()
 	const currentYear = today.getFullYear()
 
-	const data = { authorised, title: "Add Game", gameForm: true, currentYear }
+	const data = { authorised, title: "Add Game", gameForm: true, currentYear, accepted }
 	const body = await handle.renderView('game-form', data)
 	context.response.body = body
 })
@@ -68,13 +70,15 @@ router.post('/add', async context => {
 
 
 router.get('/login', async context => {
-	const data = { noNav: true, logReg: true, title: "Log In" }
+	const accepted = context.cookies.get('accepted')
+	const data = { noNav: true, logReg: true, title: "Log In", accepted }
 	const body = await handle.renderView('login', data)
 	context.response.body = body
 })
 
 router.get('/register', async context => {
-	const data = { noNav: true, logReg: true, title: "Register" }
+	const accepted = context.cookies.get('accepted')
+	const data = { noNav: true, logReg: true, title: "Register", accepted }
 	const body = await handle.renderView('register', data)
 	context.response.body = body
 })
@@ -90,9 +94,9 @@ router.post('/register', async context => {
 })
 
 router.get('/logout', context => {
-  // context.cookies.set('authorised', null) // this does the same
-  context.cookies.delete('authorised')
-  context.response.redirect('/')
+  	// context.cookies.set('authorised', null) // this does the same
+  	context.cookies.delete('authorised')
+  	context.response.redirect('/')
 })
 
 router.post('/login', async context => {
@@ -113,12 +117,13 @@ router.post('/login', async context => {
 
 router.get('/games/:id', async context => {
 	const authorised = context.cookies.get('authorised')
+	const accepted = context.cookies.get('accepted')
 	const id = context.params.id
 	try {
 		const game = await getGame(id)
 		const reviews = await allReviews(id)
 		console.log(reviews)
-		const data = { authorised, title: game.name, gameDetail: true, game, reviews }
+		const data = { authorised, title: game.name, gameDetail: true, game, reviews, accepted }
 		const body = await handle.renderView('game-detail', data)
 		context.response.body = body
 	}
@@ -140,7 +145,25 @@ router.post('/add-review', async context => {
 	await addReview(obj, authorised)
 
 	context.response.redirect(`/games/${obj.gameId}`)
+})
 
+router.get('/cookie-policy', async context => {
+	const authorised = context.cookies.get('authorised')
+	const data = { authorised, title: "Cookie Policy", accepted: true }
+	const body = await handle.renderView('cookies', data)
+	context.response.body = body
+})
+
+router.get('/terms-of-use', async context => {
+	const authorised = context.cookies.get('authorised')
+	const data = { authorised, title: "Terms of Use", accepted: true }
+	const body = await handle.renderView('terms', data)
+	context.response.body = body
+})
+router.post('/accept-cookies', context => {
+	console.log("POST /accept-cookies")
+	context.cookies.set('accepted', true)
+	context.response.redirect('/')
 })
 
 export default router
