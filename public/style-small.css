@@ -29,6 +29,20 @@ main {
     margin-bottom: 30px;
 } 
 
+footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: var(--primary);
+}
+footer a {
+    text-decoration: underline;
+    margin: 10px;
+}
+footer a:hover {
+    text-decoration: none;
+}
+
 /* forms */
 
 input:not(input[type="range"]), textarea {
