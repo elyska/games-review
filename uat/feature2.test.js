@@ -10,24 +10,24 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 //     As a user
 //     I want to be able to see all games
 //     so that I can read their name and release year
-//
 
 // SCENARIO: Added game appears on the home page
 Deno.test('Added game appears on the home page     ', async () => {
     // GIVEN I am logged in
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
             await page.click('input[type="submit"]', { waitUntil: 'networkidle0' })
+            await page.click('form[action="/accept-cookies"] button', { waitUntil: 'networkidle0' })
     // AND I am on the "Add Game" form page
             await page.goto(url + 'add-game', { waitUntil: 'networkidle0' })
-    // WHEN I fill in "name" with "Space Invaders"
-            await page.type('input[name="name"]', 'Space Invaders')
+    // WHEN I fill in "name" with "New Game"
+            await page.type('input[name="name"]', 'New Game')
     // AND I fill in "publisher" with "Atari, Inc."
             await page.type('input[name="publisher"]', 'Atari, Inc.')
     // AND I select "1981" from "year"
@@ -39,18 +39,19 @@ Deno.test('Added game appears on the home page     ', async () => {
             let storedPromises = []
             for (let i = 0; i < clicks; i++) storedPromises += page.keyboard.press('ArrowLeft')
             await Promise.all(storedPromises)
-    // AND I fill in "description" with "Space Invaders is a fixed shooter."
-            await page.type('textarea[name="description"]', 'Space Invaders is a fixed shooter.')
+    // AND I fill in "description" with "Game *description*"
+            await page.type('textarea[name="description"]', 'Game *description*')
     // AND I click the "Submit" button
             await page.click('input[type="submit"]', { waitUntil: 'networkidle0' })
     // THEN I should be redirected to the "Home" page
             await assertEquals(page.url(), url, 'not on the homepage')
-    // AND I should see a "Space Invaders" heading
+    // AND I should see a "New Game" heading
             const names = await page.$$eval('h1', nodes => {
                 const names = []
                 for (const node of nodes) names.push(node.innerText)
                 return names
             })
-            await assertArrayIncludes(names, ["Space Invaders"], "game name not displayed on the homepage")
+            await assertArrayIncludes(names, ["New Game"], "game name not displayed on the homepage")
+            await page.waitForTimeout(5000)
             await browser.close()
 })

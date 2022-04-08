@@ -13,9 +13,9 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 // SCENARIO access login page from home page
 Deno.test('access login page from home page     ', async () => {
     // GIVEN I am on the homepage
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'logout', { waitUntil: 'networkidle0' })
@@ -34,9 +34,9 @@ Deno.test('access login page from home page     ', async () => {
 
 Deno.test('log in with valid username/password  ', async () => {
     // GIVEN I am on the homepage
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url, { waitUntil: 'networkidle0' })
@@ -56,9 +56,9 @@ Deno.test('log in with valid username/password  ', async () => {
 
 Deno.test('log in with invalid password         ', async () => {
     // GIVEN I am on the "Log In" page
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url, { waitUntil: 'networkidle0' })
@@ -78,9 +78,9 @@ Deno.test('log in with invalid password         ', async () => {
 
 Deno.test('log in with invalid username/password', async () => {
     // GIVEN I am on the "Log In" page
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url, { waitUntil: 'networkidle0' })

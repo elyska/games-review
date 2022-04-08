@@ -14,9 +14,9 @@ const url = 'https://photo-tempo-8080.codio-box.uk/'
 // SCENARIO: View Chrome Dino datails page
 Deno.test('View Chrome Dino datails page     ', async () => {
     // GIVEN I am on the homepage
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 30, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url, { waitUntil: 'networkidle0' })
@@ -40,15 +40,16 @@ Deno.test('View Chrome Dino datails page     ', async () => {
     // AND I should see "11/3/2022" text
             const date = await page.$eval('main section:nth-of-type(2) p:nth-of-type(3)', node => node.innerText)
             await assertEquals(date, "11/3/2022", 'no "11/3/2022" date')
+            await page.waitForTimeout(3000)
             await browser.close()
 })
 
 // SCENARIO: Browse to invalid game
 Deno.test('Browse to invalid game     ', async () => {
     // GIVEN I am on the "Home" page
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 50, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url, { waitUntil: 'networkidle0' })
@@ -60,21 +61,23 @@ Deno.test('Browse to invalid game     ', async () => {
     // AND I should see "PAGE NOT FOUND" text
             const p = await page.$eval('main p', node => node.innerText)
             await assertEquals(p, "PAGE NOT FOUND", 'no "PAGE NOT FOUND" text')
+            await page.waitForTimeout(3000)
             await browser.close()
 })
 
 // SCENARIO: Add and view a game with markdown formatting
 Deno.test('Add and view a game with markdown formatting     ', async () => {
     // GIVEN I am logged in
-            const args = [`--window-size=${1000},${800}`]
-            const browser = await puppeteer.launch({ headless: true, args })
-            //const browser = await puppeteer.launch({ headless: false, slowMo: 10, args  })
+            const args = [`--window-size=${1000},${700}`]
+            //const browser = await puppeteer.launch({ headless: true, args })
+            const browser = await puppeteer.launch({ headless: false, slowMo: 30, args  })
             const page = await browser.newPage()
             await page.setViewport({ width: 1000, height: 800 })
             await page.goto(url + 'login', { waitUntil: 'networkidle0' })
             await page.type('input[name="username"]', 'doej')
             await page.type('input[name="password"]', 'p455w0rd')
             await page.click('input[type="submit"]', { waitUntil: 'networkidle0' })
+            await page.click('form[action="/accept-cookies"] button', { waitUntil: 'networkidle0' })
     // AND I am on the "Add Game" form page
             await page.goto(url + 'add-game', { waitUntil: 'networkidle0' })
     // WHEN I fill in "name" with "Microsoft Solitaire"
@@ -108,5 +111,6 @@ Deno.test('Add and view a game with markdown formatting     ', async () => {
     // AND I should see "bounce off" text in an em element
             const i = await page.$eval('main em', node => node.innerText)
             await assertEquals(i, "bounce off", 'em not found')
+            await page.waitForTimeout(3000)
             await browser.close()
 })
